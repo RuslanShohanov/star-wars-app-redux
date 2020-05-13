@@ -1,14 +1,20 @@
-import { GET_CHARACTERS, Side, ADD_CHARACTER } from './constants';
+import {
+    GET_CHARACTERS,
+    Side,
+    ADD_CHARACTER,
+    REMOVE_CHARACTER,
+    GET_CHARACTER_BY_ID,
+} from './constants';
 
 export interface Character {
     id: string;
-    firstName: string;
-    lastName?: string;
+    name: string;
     side: Side;
 }
 
 export interface CharactersState {
-    characters: Character[];
+    selectedCharacter?: string;
+    list: Character[];
 }
 
 export interface GetCharactersAction {
@@ -16,9 +22,23 @@ export interface GetCharactersAction {
     characters: Character[];
 }
 
+export interface GetCharacterByIdAction {
+    type: typeof GET_CHARACTER_BY_ID;
+    characterId: string;
+}
+
 export interface AddCharacterAction {
     type: typeof ADD_CHARACTER;
     character: Character;
 }
 
-export type CharactersAction = GetCharactersAction | AddCharacterAction;
+export interface RemoveCharacterAction {
+    type: typeof REMOVE_CHARACTER;
+    characterId: string;
+}
+
+export type CharactersAction =
+    | GetCharactersAction
+    | GetCharacterByIdAction
+    | AddCharacterAction
+    | RemoveCharacterAction;

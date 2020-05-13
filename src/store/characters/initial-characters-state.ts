@@ -1,15 +1,18 @@
 import { v4 } from 'uuid';
 
-import { Character } from './interfaces';
+import { Character, CharactersState } from './interfaces';
 import { Side } from './constants';
 
-export const initialCharactersState: Character[] = [
+export const initialCharacters: Character[] = [
     {
         id: v4(),
-        firstName: 'Luke',
-        lastName: 'Skywalker',
+        name: 'Luke Skywalker',
         side: Side.Light,
     },
-    { id: v4(), firstName: 'Dart', lastName: 'Vader', side: Side.Dark },
-    { id: v4(), firstName: 'R2D2', side: Side.Light },
+    { id: v4(), name: 'Dart Vader', side: Side.Dark },
+    { id: v4(), name: 'R2D2', side: Side.Light },
 ];
+
+export const initialCharactersState: CharactersState = {
+    list: initialCharacters,
+};

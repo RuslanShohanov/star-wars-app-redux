@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
 import { ListingComponent } from '../../components/characters/listing';
-import { CharactersState } from '../../store/characters/interfaces';
+import { AppState } from '../../store/interfaces';
 
-const mapStateToProps = (state: CharactersState) => {
+const mapStateToProps = (state: AppState) => {
     return {
-        characters: state.characters,
+        characters: state.characters.list,
     };
 };
 

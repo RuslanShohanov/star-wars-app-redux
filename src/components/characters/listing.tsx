@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { ListingProps } from './interfaces';
 import { Side } from '../../store/characters/constants';
+import { ActionCellComponent } from './action-cell';
 
 export const ListingComponent = (props: ListingProps) => {
     const { push } = useHistory();
@@ -19,9 +20,9 @@ export const ListingComponent = (props: ListingProps) => {
             <table className="table">
                 <thead className="table-head">
                     <tr className="table-row">
-                        <th className="header">First Name</th>
-                        <th className="header">Last Name</th>
+                        <th className="header">Name</th>
                         <th className="header">Side</th>
+                        <th className="header">Action</th>
                     </tr>
                 </thead>
                 <tbody className="table-body">
@@ -34,9 +35,11 @@ export const ListingComponent = (props: ListingProps) => {
                                 : 'secondary';
                         return (
                             <tr className={`table-${className}`}>
-                                <td>{character.firstName}</td>
-                                <td>{character.lastName}</td>
+                                <td>{character.name}</td>
                                 <td>{character.side}</td>
+                                <td>
+                                    <ActionCellComponent rowId={character.id} />
+                                </td>
                             </tr>
                         );
                     })}

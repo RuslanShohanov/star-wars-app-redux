@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
-import { Dispatch } from 'react';
 
 import { FormComponent } from '../../components/characters/form';
-import { CharactersAction, Character } from '../../store/characters/interfaces';
-import { addCharacter } from '../../store/characters/actions';
+import { AppState } from '../../store/interfaces';
 
-const mapDispatchToProps = (dispatch: Dispatch<CharactersAction>) => {
+const mapStateToProps = (state: AppState) => {
+    const selectedCharacter = state.characters.selectedCharacter;
+    const character = selectedCharacter
+        ? state.characters.list.find((c) => c.id === selectedCharacter)
+        : undefined;
+
     return {
-        add: (character: Character) => {
-            dispatch(addCharacter(character));
-        },
+        character,
     };
 };
 
-export const Form = connect(mapDispatchToProps)(FormComponent);
+export const Form = connect(mapStateToProps)(FormComponent);

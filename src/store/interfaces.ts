@@ -1,5 +1,5 @@
-import { Character } from './characters/interfaces';
+import { CharactersState } from './characters/interfaces';
 
 export interface AppState {
-    characters: Character[];
+    characters: CharactersState;
 }

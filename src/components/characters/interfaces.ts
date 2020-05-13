@@ -4,4 +4,6 @@ export interface ListingProps {
     characters: Character[];
 }
 
-export interface FormProps {}
+export interface FormProps {
+    character?: Character;
+}
