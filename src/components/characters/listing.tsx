@@ -5,6 +5,8 @@ import { ListingProps } from './interfaces';
 import { ActionCellComponent } from './action-cell';
 import { SideCell } from './side-cell';
 
+import './styles/listing.css';
+
 export const ListingComponent = (props: ListingProps) => {
     const { push } = useHistory();
     const match = useRouteMatch();
@@ -15,11 +17,18 @@ export const ListingComponent = (props: ListingProps) => {
 
     return (
         <>
-            <button className="btn btn-link" onClick={handleAddClick}>
-                Add
-            </button>
+            <div className="listing-header">
+                <h5>
+                    <span
+                        className="badge badge-primary add-character"
+                        onClick={handleAddClick}
+                    >
+                        + Add
+                    </span>
+                </h5>
+            </div>
             <table className="table">
-                <thead className="table-head">
+                <thead className="thead">
                     <tr className="table-row">
                         <th className="header">Character</th>
                         <th className="header">Side</th>

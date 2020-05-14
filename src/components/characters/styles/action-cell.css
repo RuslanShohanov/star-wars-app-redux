@@ -3,3 +3,15 @@
     margin-left: 2px;
     margin-right: 2px;
 }
+
+.trash-icon {
+    width: 15px;
+}
+
+.edit-icon {
+    width: 15px;
+}
+
+.remove-item:hover {
+    background-color: #cd2334;
+}

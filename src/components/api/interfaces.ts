@@ -7,15 +7,19 @@ import {
     Man,
 } from '../../store/api/interfaces';
 
-export interface PlanetsProps {
+interface IsLoading {
+    isLoading: boolean;
+}
+
+export interface PlanetsProps extends IsLoading {
     planets: Planet[];
 }
 
-export interface SpaceshipsProps {
+export interface SpaceshipsProps extends IsLoading {
     spaceships: Spaceship[];
 }
 
-export interface PeopleProps {
+export interface PeopleProps extends IsLoading {
     people: Man[];
 }
 

@@ -6,6 +6,7 @@ import { SpaceshipsComponent } from '../../components/api/spaceships';
 const mapStateToProps = (state: AppState) => {
     return {
         spaceships: state.apiReducer.spaceships.list,
+        isLoading: !state.apiReducer.spaceships.isFetching,
     };
 };
 

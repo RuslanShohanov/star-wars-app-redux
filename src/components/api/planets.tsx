@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { PlanetsProps } from './interfaces';
 import { fetchPlanetsIfNeeded } from '../../store/api/actions/planets';
+import { Loader } from '../loader';
 
 export const PlanetsComponent = (props: PlanetsProps) => {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export const PlanetsComponent = (props: PlanetsProps) => {
         dispatch(fetchPlanetsIfNeeded());
     }, [dispatch, props]);
 
-    return props.planets ? (
+    return !props.isLoading ? (
         <table className="table">
             <thead className="table-head">
                 <tr className="table-row">
@@ -43,6 +44,6 @@ export const PlanetsComponent = (props: PlanetsProps) => {
             </tbody>
         </table>
     ) : (
-        <div>Loading planets...</div>
+        <Loader />
     );
 };

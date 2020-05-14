@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { PeopleProps } from './interfaces';
 import { fetchPeopleIfNeeded } from '../../store/api/actions/people';
+import { Loader } from '../loader';
 
 export const PeopleComponent = (props: PeopleProps) => {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export const PeopleComponent = (props: PeopleProps) => {
         dispatch(fetchPeopleIfNeeded());
     }, [dispatch, props]);
 
-    return props.people ? (
+    return !props.isLoading ? (
         <table className="table">
             <thead className="table-head">
                 <tr className="table-row">
@@ -43,6 +44,6 @@ export const PeopleComponent = (props: PeopleProps) => {
             </tbody>
         </table>
     ) : (
-        <div>Loading people...</div>
+        <Loader />
     );
 };

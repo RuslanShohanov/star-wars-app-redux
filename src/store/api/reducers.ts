@@ -24,7 +24,7 @@ const planets = (
 ) => {
     switch (action.type) {
         case REQUEST_PLANETS: {
-            return { ...state, isFetching: true };
+            return { ...state };
         }
         case RECEIVE_PLANETS: {
             return { isFetching: true, list: [...action.planets] };
@@ -41,7 +41,7 @@ const spaceships = (
 ) => {
     switch (action.type) {
         case REQUEST_SPACESHPIS: {
-            return { ...state, isFetching: true };
+            return { ...state };
         }
         case RECEIVE_SPACESHPIS: {
             return { isFetching: true, list: [...action.spaceships] };
@@ -55,7 +55,7 @@ const spaceships = (
 const people = (state: PeopleState = initialApiState, action: PeopleAction) => {
     switch (action.type) {
         case REQUEST_PEOPLE: {
-            return { ...state, isFetching: true };
+            return { ...state };
         }
         case RECEIVE_PEOPLE: {
             return { isFetching: true, list: [...action.people] };

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch, Link } from 'react-router-dom';
 
 import { removeCharacter, editCharacter } from '../../store/characters/actions';
+import trashIcon from '../../images/trash.png';
+import editIcon from '../../images/edit.png';
 
 import './styles/action-cell.css';
 
@@ -26,11 +28,18 @@ export const ActionCellComponent = (props: ActionCellProps) => {
 
     return (
         <div>
-            <span className="badge badge-primary" onClick={handleEditClick}>
-                Edit
-            </span>
-            <span className="badge badge-danger" onClick={handleRemoveClick}>
-                Remove
+            <Link
+                to={`${match.url}/edit/${props.rowId}`}
+                className="badge badge-primary"
+                onClick={handleEditClick}
+            >
+                <img className="edit-icon" src={editIcon} alt="Saber Icon" />
+            </Link>
+            <span
+                className="badge badge-danger remove-item"
+                onClick={handleRemoveClick}
+            >
+                <img className="trash-icon" src={trashIcon} alt="Saber Icon" />
             </span>
         </div>
     );

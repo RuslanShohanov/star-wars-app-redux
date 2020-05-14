@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { fetchSpaceshipsIfNeeded } from '../../store/api/actions/spaceships';
 import { SpaceshipsProps } from './interfaces';
+import { Loader } from '../loader';
 
 export const SpaceshipsComponent = (props: SpaceshipsProps) => {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export const SpaceshipsComponent = (props: SpaceshipsProps) => {
         dispatch(fetchSpaceshipsIfNeeded());
     }, [dispatch, props]);
 
-    return props.spaceships ? (
+    return !props.isLoading ? (
         <table className="table">
             <thead className="table-head">
                 <tr className="table-row">
@@ -45,6 +46,6 @@ export const SpaceshipsComponent = (props: SpaceshipsProps) => {
             </tbody>
         </table>
     ) : (
-        <div>Loading spaceships...</div>
+        <Loader />
     );
 };
