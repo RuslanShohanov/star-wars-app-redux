@@ -7,7 +7,7 @@ import {
     Redirect,
 } from 'react-router-dom';
 
-import { ApiPage } from './api-page';
+import { ApiPage } from './api/api-page';
 import { Listing } from '../containers/characters/listing';
 import { Form } from '../containers/characters/form';
 

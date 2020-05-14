@@ -7,8 +7,12 @@ import {
     useRouteMatch,
 } from 'react-router-dom';
 
+import { Planets } from '../../containers/api/planets';
+import { People } from '../../containers/api/people';
+import { Spaceships } from '../../containers/api/spaceships';
+
 export const ApiPage = () => {
-    let match = useRouteMatch();
+    const match = useRouteMatch();
 
     return (
         <Router>
@@ -29,14 +33,14 @@ export const ApiPage = () => {
                     </ul>
                 </nav>
                 <Switch>
-                    <Route path="/people" exact={true}>
-                        <div>people</div>
+                    <Route path={`${match.url}/people`} exact={true}>
+                        <People />
                     </Route>
-                    <Route path="/spaceships" exact={true}>
-                        <div>spaceships</div>
+                    <Route path={`${match.url}/spaceships`} exact={true}>
+                        <Spaceships />
                     </Route>
-                    <Route path="/planets" exact={true}>
-                        <div>planets</div>
+                    <Route path={`${match.url}/planets`} exact={true}>
+                        <Planets />
                     </Route>
                 </Switch>
             </div>
