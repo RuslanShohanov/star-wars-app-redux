@@ -1,15 +1,16 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import { ListingProps } from './interfaces';
-import { Side } from '../../store/characters/constants';
 import { ActionCellComponent } from './action-cell';
+import { SideCell } from './side-cell';
 
 export const ListingComponent = (props: ListingProps) => {
     const { push } = useHistory();
+    const match = useRouteMatch();
 
     const handleAddClick = () => {
-        push('/add');
+        push(`${match.url}/add`);
     };
 
     return (
@@ -20,23 +21,19 @@ export const ListingComponent = (props: ListingProps) => {
             <table className="table">
                 <thead className="table-head">
                     <tr className="table-row">
-                        <th className="header">Name</th>
+                        <th className="header">Character</th>
                         <th className="header">Side</th>
-                        <th className="header">Action</th>
+                        <th className="header">Actions</th>
                     </tr>
                 </thead>
                 <tbody className="table-body">
                     {props.characters.map((character) => {
-                        const className =
-                            character.side === Side.Dark
-                                ? 'danger'
-                                : character.side === Side.Light
-                                ? 'primary'
-                                : 'secondary';
                         return (
-                            <tr className={`table-${className}`}>
+                            <tr>
                                 <td>{character.name}</td>
-                                <td>{character.side}</td>
+                                <td>
+                                    <SideCell side={character.side} />
+                                </td>
                                 <td>
                                     <ActionCellComponent rowId={character.id} />
                                 </td>

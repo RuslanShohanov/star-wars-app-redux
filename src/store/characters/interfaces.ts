@@ -1,9 +1,10 @@
 import {
     GET_CHARACTERS,
     Side,
-    ADD_CHARACTER,
+    SAVE_CHARACTER,
     REMOVE_CHARACTER,
     GET_CHARACTER_BY_ID,
+    RESET_SELECTED,
 } from './constants';
 
 export interface Character {
@@ -14,7 +15,7 @@ export interface Character {
 
 export interface CharactersState {
     selectedCharacter?: string;
-    list: Character[];
+    characters: Character[];
 }
 
 export interface GetCharactersAction {
@@ -27,8 +28,8 @@ export interface GetCharacterByIdAction {
     characterId: string;
 }
 
-export interface AddCharacterAction {
-    type: typeof ADD_CHARACTER;
+export interface SaveCharacterAction {
+    type: typeof SAVE_CHARACTER;
     character: Character;
 }
 
@@ -37,8 +38,13 @@ export interface RemoveCharacterAction {
     characterId: string;
 }
 
+export interface ResetSelectedAction {
+    type: typeof RESET_SELECTED;
+}
+
 export type CharactersAction =
     | GetCharactersAction
     | GetCharacterByIdAction
-    | AddCharacterAction
-    | RemoveCharacterAction;
+    | SaveCharacterAction
+    | RemoveCharacterAction
+    | ResetSelectedAction;

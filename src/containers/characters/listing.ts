@@ -5,7 +5,7 @@ import { AppState } from '../../store/interfaces';
 
 const mapStateToProps = (state: AppState) => {
     return {
-        characters: state.characters.list,
+        characters: state.charactersReducer.characters,
     };
 };
 

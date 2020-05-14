@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory, useRouteMatch } from 'react-router-dom';
+
 import { removeCharacter, editCharacter } from '../../store/characters/actions';
-import { useHistory } from 'react-router-dom';
+
+import './styles/action-cell.css';
 
 interface ActionCellProps {
     rowId: string;
@@ -10,6 +13,7 @@ interface ActionCellProps {
 export const ActionCellComponent = (props: ActionCellProps) => {
     const dispatch = useDispatch();
     const { push } = useHistory();
+    const match = useRouteMatch();
 
     const handleRemoveClick = () => {
         dispatch(removeCharacter(props.rowId));
@@ -17,13 +21,17 @@ export const ActionCellComponent = (props: ActionCellProps) => {
 
     const handleEditClick = () => {
         dispatch(editCharacter(props.rowId));
-        push(`/edit/${props.rowId}`);
+        push(`${match.url}/edit/${props.rowId}`);
     };
 
     return (
         <div>
-            <button onClick={handleEditClick}>Edit</button>
-            <button onClick={handleRemoveClick}>Remove</button>
+            <span className="badge badge-primary" onClick={handleEditClick}>
+                Edit
+            </span>
+            <span className="badge badge-danger" onClick={handleRemoveClick}>
+                Remove
+            </span>
         </div>
     );
 };

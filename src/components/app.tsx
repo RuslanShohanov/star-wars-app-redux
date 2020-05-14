@@ -29,10 +29,10 @@ export const AppComponent = () => {
                     <Route path="/characters" exact={true}>
                         <Listing />
                     </Route>
-                    <Route path="/add" exact={true}>
+                    <Route path="/characters/add" exact={true}>
                         <Form />
                     </Route>
-                    <Route path="/edit/:id" exact={true}>
+                    <Route path="/characters/edit/:id" exact={true}>
                         <Form />
                     </Route>
                     <Route path="/api" exact={true}>

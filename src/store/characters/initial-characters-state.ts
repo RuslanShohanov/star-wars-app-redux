@@ -14,5 +14,5 @@ export const initialCharacters: Character[] = [
 ];
 
 export const initialCharactersState: CharactersState = {
-    list: initialCharacters,
+    characters: initialCharacters,
 };
