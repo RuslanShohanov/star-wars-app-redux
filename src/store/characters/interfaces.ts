@@ -1,5 +1,4 @@
 import {
-    GET_CHARACTERS,
     Side,
     SAVE_CHARACTER,
     REMOVE_CHARACTER,
@@ -15,11 +14,6 @@ export interface Character {
 
 export interface CharactersState {
     selectedCharacter?: string;
-    characters: Character[];
-}
-
-export interface GetCharactersAction {
-    type: typeof GET_CHARACTERS;
     characters: Character[];
 }
 
@@ -43,7 +37,6 @@ export interface ResetSelectedAction {
 }
 
 export type CharactersAction =
-    | GetCharactersAction
     | GetCharacterByIdAction
     | SaveCharacterAction
     | RemoveCharacterAction

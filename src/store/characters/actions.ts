@@ -1,5 +1,4 @@
 import {
-    GetCharactersAction,
     Character,
     SaveCharacterAction,
     RemoveCharacterAction,
@@ -7,19 +6,11 @@ import {
     ResetSelectedAction,
 } from './interfaces';
 import {
-    GET_CHARACTERS,
     SAVE_CHARACTER,
     REMOVE_CHARACTER,
     GET_CHARACTER_BY_ID,
     RESET_SELECTED,
 } from './constants';
-
-export const getCharacters = (characters: Character[]): GetCharactersAction => {
-    return {
-        type: GET_CHARACTERS,
-        characters,
-    };
-};
 
 export const saveCharacter = (character: Character): SaveCharacterAction => {
     return {
